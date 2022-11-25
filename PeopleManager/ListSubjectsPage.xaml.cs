@@ -18,16 +18,15 @@ using System.Windows.Shapes;
 namespace PeopleManager
 {
     /// <summary>
-    /// Interaction logic for ListPeoplePage.xaml
+    /// Interaction logic for ListSubjectsPage.xaml
     /// </summary>
-    public partial class ListPeoplePage : FramedPage
+    public partial class ListSubjectsPage : FramedPage
     {
-        public ListPeoplePage(CollegeViewModel personViewModel) : base(personViewModel)
+        public ListSubjectsPage(CollegeViewModel collegeViewModel) : base (collegeViewModel)
         {
             InitializeComponent();
-            LvPeople.ItemsSource = personViewModel.Students;
+            LvPeople.ItemsSource = collegeViewModel.Subjects;
         }
-
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(new EditPersonPage(personViewModel: CollegeViewModel)
@@ -40,12 +39,12 @@ namespace PeopleManager
         {
             if (LvPeople.SelectedItems != null)
             {
-                Frame.Navigate(new EditPersonPage(personViewModel: CollegeViewModel, LvPeople.SelectedItem as Student)
+                Frame.Navigate(new ListSubjectsPage(collegeViewModel: CollegeViewModel)
                 {
                     Frame = Frame
                 });
             }
-           
+
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -56,17 +55,9 @@ namespace PeopleManager
             }
         }
 
-        private void Courses_Click(object sender, RoutedEventArgs e)
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(new ListSubjectsPage(collegeViewModel: CollegeViewModel)
-            {
-                Frame = Frame
-            });
-        }
-
-        private void Lecturers_Click(object sender, RoutedEventArgs e)
-        {
-
+            Frame.NavigationService.GoBack();
         }
     }
 }

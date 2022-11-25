@@ -132,7 +132,13 @@ namespace PeopleManager.Dal
                     {
                         while (dr.Read())
                         {
-                            list.Add(ReadStudent(dr));
+                            Student student = ReadStudent(dr);
+
+                            var studentSubjects = this.GetStudentSubjects().Where(sb => sb.StudentId == student.Id);
+
+                            student.Subjects = studentSubjects.Select(sb => this.GetSubject(sb.SubjectId)).ToList();
+
+                            list.Add(student);
                         }
                     }
 

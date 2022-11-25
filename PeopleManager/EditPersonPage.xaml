@@ -9,22 +9,31 @@
       Title="EditPersonPage">
 
     <Grid Background="{StaticResource GradientBackground}" x:Name="GridContainer">
-        <Border x:Name="PictureBorder" BorderBrush="White" BorderThickness="0.7" Margin="426,75,77,104">
-            <Image x:Name="Picture" Stretch="Uniform" Source="{Binding Image}"/>
+        <Border x:Name="PictureBorder" BorderBrush="White" BorderThickness="0.7" Margin="330,75,18,104">
+            <Image x:Name="Picture" Stretch="Uniform" Source="{Binding Image}" RenderTransformOrigin="0.5,0.5" Margin="-1,-4,0,1">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.161"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0.415"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
         </Border>
-        <Label Content="First name" Foreground="White" HorizontalAlignment="Left" Margin="62,75,0,0" VerticalAlignment="Top" Width="85"/>
-        <TextBox x:Name="TbFirstName" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="152,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
-        <Label Content="Last name" Foreground="White" HorizontalAlignment="Left" Margin="62,127,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TbLastName" Text="{Binding LastName}" HorizontalAlignment="Left" Margin="152,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
-        <Label Content="Age" Foreground="White" HorizontalAlignment="Left" Margin="62,184,0,0" VerticalAlignment="Top"/>
-        <TextBox Tag="Int" x:Name="TbAge" Text="{Binding Age}" HorizontalAlignment="Left" Margin="152,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-        <Label Content="Email" Foreground="White" HorizontalAlignment="Left" Margin="62,242,0,0" VerticalAlignment="Top"/>
-        <TextBox Tag="Email" x:Name="TbEmail" Text="{Binding Email}" HorizontalAlignment="Left" Margin="152,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
+        <Label Content="First name" Foreground="White" HorizontalAlignment="Left" Margin="30,75,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="TbFirstName" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="103,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
+        <Label Content="Last name" Foreground="White" HorizontalAlignment="Left" Margin="30,127,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TbLastName" Text="{Binding LastName}" HorizontalAlignment="Left" Margin="103,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
+        <Label Content="Age" Foreground="White" HorizontalAlignment="Left" Margin="30,184,0,0" VerticalAlignment="Top"/>
+        <TextBox Tag="Int" x:Name="TbAge" Text="{Binding Age}" HorizontalAlignment="Left" Margin="103,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Email" Foreground="White" HorizontalAlignment="Left" Margin="30,242,0,0" VerticalAlignment="Top"/>
+        <TextBox Tag="Email" x:Name="TbEmail" Text="{Binding Email}" HorizontalAlignment="Left" Margin="103,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
         <Button x:Name="BtnBack" Click="BtnBack_Click" Background="Transparent" HorizontalAlignment="Left" Margin="30,22,0,0" VerticalAlignment="Top" Height="27" Width="51">
             <Image Source="/Assets/back.png">
             </Image>
         </Button>
-        <Button x:Name="BtnCommit" Click="BtnCommit_Click" Content="Save" HorizontalAlignment="Left" Margin="152,356,0,0" VerticalAlignment="Top" Height="19" Width="70"/>
-        <Button x:Name="BtnUpload" Click="BtnUpload_Click"  Content="Upload" HorizontalAlignment="Left" Margin="280,356,0,0" VerticalAlignment="Top" Height="19" Width="70"/>
+        <Button x:Name="BtnCommit" Click="BtnCommit_Click" Content="Save" HorizontalAlignment="Left" Margin="62,295,0,0" VerticalAlignment="Top" Height="30" Width="111"/>
+        <Button x:Name="BtnUpload" Click="BtnUpload_Click"  Content="Upload" HorizontalAlignment="Left" Margin="190,295,0,0" VerticalAlignment="Top" Height="30" Width="110"/>
     </Grid>
 </local:FramedPage>

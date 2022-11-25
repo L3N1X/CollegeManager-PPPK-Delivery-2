@@ -50,11 +50,11 @@ namespace PeopleManager
                 _student.Picture = ImageUtils.BitmapImageToByteArray(Picture.Source as BitmapImage);
                 if (_student.Id == 0)
                 {
-                    StudentViewModel.Students.Add(_student);
+                    CollegeViewModel.Students.Add(_student);
                 }
                 else
                 {
-                    StudentViewModel.UpdateStudent(_student);
+                    CollegeViewModel.UpdateStudent(_student);
                 }
                 Frame.NavigationService.GoBack();
             }

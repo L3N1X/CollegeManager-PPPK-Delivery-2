@@ -17,5 +17,7 @@ namespace PeopleManager.Models
         {
             this.Students = new HashSet<Student>(); 
         }
+        public int StudentsEnrolled { get => Students.Count; }
+        public string LecturerName { get => Lecturer.FullName; }
     }
 }

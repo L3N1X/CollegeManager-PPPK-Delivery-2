@@ -21,5 +21,6 @@ namespace PeopleManager.Models
         {
             get => ImageUtils.ByteArrayToBitmapImage(Picture); 
         }
+        public string FullName { get => FirstName + " " + LastName; }
     }
 }

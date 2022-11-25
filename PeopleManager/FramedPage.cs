@@ -10,11 +10,11 @@ namespace PeopleManager
 {
     public class FramedPage : Page
     {
-        public FramedPage(CollegeViewModel personViewModel)
+        public FramedPage(CollegeViewModel collegeViewModel)
         {
-            StudentViewModel = personViewModel;
+            CollegeViewModel = collegeViewModel;
         }
-        public CollegeViewModel StudentViewModel { get; }
+        public CollegeViewModel CollegeViewModel { get; }
         public Frame Frame { get; set; }
     }
 }

@@ -63,6 +63,9 @@
     <Compile Include="ListPeoplePage.xaml.cs">
       <DependentUpon>ListPeoplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListSubjectsPage.xaml.cs">
+      <DependentUpon>ListSubjectsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Lecturer.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentSubject.cs" />
@@ -74,6 +77,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ListPeoplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListSubjectsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

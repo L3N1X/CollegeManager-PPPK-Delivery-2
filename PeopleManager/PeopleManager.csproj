@@ -59,6 +59,9 @@
     <Compile Include="EditPersonPage.xaml.cs">
       <DependentUpon>EditPersonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditSubjectPage.xaml.cs">
+      <DependentUpon>EditSubjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FramedPage.cs" />
     <Compile Include="ListPeoplePage.xaml.cs">
       <DependentUpon>ListPeoplePage.xaml</DependentUpon>
@@ -73,6 +76,10 @@
     <Compile Include="Utils\ValidationUtils.cs" />
     <Compile Include="ViewModel\PersonViewModel.cs" />
     <Page Include="EditPersonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditSubjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

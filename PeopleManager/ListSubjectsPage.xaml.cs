@@ -29,7 +29,7 @@ namespace PeopleManager
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(new EditPersonPage(personViewModel: CollegeViewModel)
+            Frame.Navigate(new EditSubjectPage(collegeViewModel: CollegeViewModel)
             {
                 Frame = Frame
             });
@@ -39,7 +39,7 @@ namespace PeopleManager
         {
             if (LvPeople.SelectedItems != null)
             {
-                Frame.Navigate(new ListSubjectsPage(collegeViewModel: CollegeViewModel)
+                Frame.Navigate(new EditSubjectPage(collegeViewModel: CollegeViewModel, LvPeople.SelectedItem as Subject)
                 {
                     Frame = Frame
                 });

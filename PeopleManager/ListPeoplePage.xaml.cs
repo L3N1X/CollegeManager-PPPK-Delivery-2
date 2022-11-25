@@ -52,7 +52,14 @@ namespace PeopleManager
         {
             if (LvPeople.SelectedItems != null)
             {
-                CollegeViewModel.Students.Remove(LvPeople.SelectedItem as Student);
+                try
+                {
+                    CollegeViewModel.Students.Remove(LvPeople.SelectedItem as Student);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("You can't delete Student that is enrolled in one or more courses.");
+                }
             }
         }
 

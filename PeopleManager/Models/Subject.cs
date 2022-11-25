@@ -19,5 +19,6 @@ namespace PeopleManager.Models
         }
         public int StudentsEnrolled { get => Students.Count; }
         public string LecturerName { get => Lecturer.FullName; }
+        public bool IsChecked { get; set; } = false;
     }
 }

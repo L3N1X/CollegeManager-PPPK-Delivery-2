@@ -31,6 +31,7 @@ namespace PeopleManager
         {
             InitializeComponent();
             _student = student ?? new Student();
+            this.LbSubjects.ItemsSource = personViewModel.Subjects;
             DataContext = _student;
         }
 

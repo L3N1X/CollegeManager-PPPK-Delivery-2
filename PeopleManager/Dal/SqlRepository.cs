@@ -196,6 +196,36 @@ namespace PeopleManager.Dal
                     });
                     cmd.ExecuteNonQuery();
                 }
+                var studentSubjects = GetStudentSubjects().Where(sb => sb.StudentId == student.Id);
+                var subjectIds = studentSubjects.Select(sb => sb.SubjectId);
+
+                IList<int> subjectIdsToAdd = new List<int>();
+                IList<int> subjectIdsToRemove = new List<int>();
+
+                student.Subjects.ToList().ForEach(s => 
+                {
+                    if(!subjectIds.Contains(s.Id))
+                        subjectIdsToAdd.Add(s.Id);
+                });
+
+                var currentStudentSubjectIds = studentSubjects.Select(sb => sb.Id);
+
+                subjectIds.ToList().ForEach(sid =>
+                {
+                    if(!currentStudentSubjectIds.Contains(sid))
+                    {
+                        subjectIdsToRemove.Add(sid);
+                    }
+                });
+
+                foreach (var sid in subjectIdsToRemove)
+                {
+                    this.DeleteStudentSubject(sid);
+                }
+                foreach (var sid in subjectIdsToAdd)
+                {
+                    this.AddStudentSubject(new StudentSubject { StudentId = student.Id, SubjectId = sid });
+                }
             }
         }
 
@@ -504,6 +534,23 @@ namespace PeopleManager.Dal
                     cmd.Parameters.Add(id);
                     cmd.ExecuteNonQuery();
                     studentSubject.Id = (int)id.Value;
+                }
+            }
+        }
+
+        public void DeleteStudentSubject(int sid)
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                con.Open();
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = MethodBase.GetCurrentMethod().Name;
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("Id", sid);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

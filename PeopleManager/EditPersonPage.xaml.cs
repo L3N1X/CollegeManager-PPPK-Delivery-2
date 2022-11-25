@@ -31,6 +31,11 @@ namespace PeopleManager
         {
             InitializeComponent();
             _student = student ?? new Student();
+            foreach (var subject in personViewModel.Subjects)
+            {
+                if (_student.Subjects.Select(s => s.Id).Contains(subject.Id))
+                    subject.IsChecked = true;
+            }
             this.LbSubjects.ItemsSource = personViewModel.Subjects;
             DataContext = _student;
         }
@@ -49,6 +54,16 @@ namespace PeopleManager
                 _student.FirstName = TbFirstName.Text.Trim();
                 _student.LastName = TbLastName.Text.Trim();
                 _student.Picture = ImageUtils.BitmapImageToByteArray(Picture.Source as BitmapImage);
+                var selectedSubjects = new List<Subject>();
+                foreach (var item in LbSubjects.Items)
+                {
+                    var subject = item as Subject;
+                    if(subject.IsChecked)
+                    {
+                        selectedSubjects.Add(subject);
+                    }
+                }
+                _student.Subjects = selectedSubjects;
                 if (_student.Id == 0)
                 {
                     CollegeViewModel.Students.Add(_student);

@@ -40,7 +40,11 @@
                     <GridViewColumn
                         Width="126"
                         Header="Name"
-                        DisplayMemberBinding="{Binding FullName}"/>
+                        DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn
+                        Width="126"
+                        Header="Name"
+                        DisplayMemberBinding="{Binding LastName}"/>
                     <GridViewColumn
                         Width="126"
                         Header="Age"

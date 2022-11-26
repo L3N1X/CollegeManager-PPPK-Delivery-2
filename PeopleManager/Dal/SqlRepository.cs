@@ -197,20 +197,20 @@ namespace PeopleManager.Dal
                     cmd.ExecuteNonQuery();
                 }
                 var studentSubjects = GetStudentSubjects().Where(sb => sb.StudentId == student.Id);
-                var subjectIds = studentSubjects.Select(sb => sb.SubjectId);
+                var dbSubjectIds = studentSubjects.Select(sb => sb.SubjectId);
 
                 IList<int> subjectIdsToAdd = new List<int>();
                 IList<int> subjectIdsToRemove = new List<int>();
 
                 student.Subjects.ToList().ForEach(s => 
                 {
-                    if(!subjectIds.Contains(s.Id))
+                    if(!dbSubjectIds.Contains(s.Id))
                         subjectIdsToAdd.Add(s.Id);
                 });
 
-                var currentStudentSubjectIds = studentSubjects.Select(sb => sb.Id);
+                var currentStudentSubjectIds = student.Subjects.Select(sb => sb.Id);
 
-                subjectIds.ToList().ForEach(sid =>
+                dbSubjectIds.ToList().ForEach(sid =>
                 {
                     if(!currentStudentSubjectIds.Contains(sid))
                     {
@@ -218,9 +218,12 @@ namespace PeopleManager.Dal
                     }
                 });
 
-                foreach (var sid in subjectIdsToRemove)
+                var studentSubjectsVezniSvi = this.GetStudentSubjects();
+                var ssidsToRemove = studentSubjectsVezniSvi.Where(sid => subjectIdsToRemove.Contains(sid.SubjectId)).Select(sid => sid.Id);
+
+                foreach (var ssid in ssidsToRemove)
                 {
-                    this.DeleteStudentSubject(sid);
+                    this.DeleteStudentSubject(ssid);
                 }
                 foreach (var sid in subjectIdsToAdd)
                 {

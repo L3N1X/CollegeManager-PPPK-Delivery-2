@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditPersonPage">
 
-    <Grid Background="{StaticResource GradientBackground}" x:Name="GridContainer">
+    <Grid Loaded="GridContainer_Loaded" Background="{StaticResource GradientBackground}" x:Name="GridContainer">
         <ListBox Background="Transparent" Foreground="Wheat" x:Name="LbSubjects" Margin="15,197,501,104">
             <ListBox.ItemTemplate>
                 <HierarchicalDataTemplate>

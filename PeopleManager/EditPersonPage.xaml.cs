@@ -27,22 +27,43 @@ namespace PeopleManager
         private const string Filter = "All supported graphics|*.jpg;*.jpeg;*.png|JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|Portable Network Graphic (*.png)|*.png";
 
         private readonly Student _student;
+        private readonly IList<Subject> _subjects;
         public EditPersonPage(CollegeViewModel personViewModel, Student student = null) : base (personViewModel)
         {
             InitializeComponent();
             _student = student ?? new Student();
-            foreach (var subject in personViewModel.Subjects)
+            _subjects = personViewModel.Subjects;
+            foreach (var subject in _subjects)
             {
                 if (_student.Subjects.Select(s => s.Id).Contains(subject.Id))
                     subject.IsChecked = true;
             }
-            this.LbSubjects.ItemsSource = personViewModel.Subjects;
+            this.LbSubjects.ItemsSource = _subjects;
             DataContext = _student;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Frame.NavigationService.GoBack();
+        }
+
+        private void GridContainer_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (var subject in _subjects)
+            {
+                subject.IsChecked = false;
+                if (_student.Subjects.Select(s => s.Id).Contains(subject.Id))
+                    subject.IsChecked = true;
+            }
+            this.LbSubjects.ItemsSource = _subjects;
+
+
+            //foreach (var subject in personViewModel.Subjects)
+            //{
+            //    if (_student.Subjects.Select(s => s.Id).Contains(subject.Id))
+            //        subject.IsChecked = true;
+            //}
+            //this.LbSubjects.ItemsSource = personViewModel.Subjects;
         }
 
         private void BtnCommit_Click(object sender, RoutedEventArgs e)

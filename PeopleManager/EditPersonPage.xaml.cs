@@ -56,14 +56,6 @@ namespace PeopleManager
                     subject.IsChecked = true;
             }
             this.LbSubjects.ItemsSource = _subjects;
-
-
-            //foreach (var subject in personViewModel.Subjects)
-            //{
-            //    if (_student.Subjects.Select(s => s.Id).Contains(subject.Id))
-            //        subject.IsChecked = true;
-            //}
-            //this.LbSubjects.ItemsSource = personViewModel.Subjects;
         }
 
         private void BtnCommit_Click(object sender, RoutedEventArgs e)
